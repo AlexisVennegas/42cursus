@@ -1,7 +1,0 @@
-{
-    "files.associations": {
-        "mlx_sample.h": "c",
-        "stdlib.h": "c",
-        "mlx_int.h": "c"
-    }
-}
