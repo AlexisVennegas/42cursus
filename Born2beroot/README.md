@@ -48,7 +48,7 @@
 
     R: protocolo de red que permite conectarse a un servidor de forma segura y remota utiliza cifrado para proteger las comunicaciones.
 
-Además de permitir la conexión remota al servidor, SSH también se puede utilizar para transferir archivos de forma segura y ejecutar comandos en el servidor de forma remota. SSH se utiliza comúnmente en entornos de servidores Linux y Unix, y es una herramienta esencial para cualquier administrador de sistemas.
+    Además de permitir la conexión remota al servidor, SSH también se puede utilizar para transferir archivos de forma segura y ejecutar comandos en el servidor de forma remota. SSH
 
     R:  sudo service ssh status
 

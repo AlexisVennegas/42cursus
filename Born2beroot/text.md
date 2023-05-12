@@ -1,0 +1,1 @@
+protocolo de red que permite la conexion y comunicion a un servidor de forma segura y remota, cifrando la comunicacion para myor seguiridad 
