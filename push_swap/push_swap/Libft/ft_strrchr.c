@@ -6,7 +6,7 @@
 /*   By: avenegas <avenegas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 17:52:26 by avenegas          #+#    #+#             */
-/*   Updated: 2023/03/13 13:18:56 by avenegas         ###   ########.fr       */
+/*   Updated: 2023/05/23 13:45:39 by avenegas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,3 @@ char	*ft_strrchr(const char *str, int c)
 	}
 	return (NULL);
 }
-/*
-
-int main () {
-   int len;
-   const char str[] = "http://www.tutorialspoint.com";
-   const char ch = '.';
-   char *ret;
-
-   ret = strrchr(str, ch);
-
-   printf("String after |%c| is - |%s|\n", ch, ret);
-   printf("funcion: %s", ft_strrchr(str, ch));
-   return(0);
-}
-
-
-
- busca la última aparición del carácter c
- */

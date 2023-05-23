@@ -1,46 +1,73 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   controlError.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: avenegas <avenegas@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/23 12:34:46 by avenegas          #+#    #+#             */
+/*   Updated: 2023/05/23 13:57:36 by avenegas         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
-t_stack *controlError(int argc, char **argv)
+int	sorted(char **s, int sz)
 {
-    t_stack *stack_a;
-    int j;
-    int i;
+	int	i;
+	int	j;
 
-    i = 1;
-    stack_a = NULL;
-    if (argc < 2)
-       errorHandler(NULL, 1);
-    if (argc == 2)
-        stack_a = oneArgument(argv);
-    else
-    {
-        // argv son mas de 2
-        while (i < argc)
-        {
-            j = ft_atoi_modified(argv[i]);
-            ft_add_back(&stack_a, ft_stack_new(j));
-            i++;
-        }        
-    }
-    return (stack_a);
+	i = 0;
+	while (i < sz)
+	{
+		j = i + 1;
+		while (j < sz)
+		{
+			if (ft_atoi(s[i]) > ft_atoi(s[j]))
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
 }
 
-
-
-int duplicate(t_stack *stack_a)
+int	duplicates(char **s, int sz)
 {
-    t_stack *aux;
+	int	i;
+	int	j;
 
-    while(stack_a)
-    {
-        aux = stack_a->next;
-        while(aux)
-        {
-            if(stack_a->num == aux->num)
-                return (1);
-            aux = aux->next;
-        }
-        stack_a = stack_a->next;
-    }
-    return (0);
+	i = 0;
+	while (i < sz)
+	{
+		j = i + 1;
+		while (j < sz)
+		{
+			if (ft_atoi(s[i]) == ft_atoi(s[j]))
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
+static void	msj_error(void)
+{
+	ft_putstr_fd("Error\n", 2);
+}
+
+void	free_all(char **s, int boolean)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != NULL)
+	{
+		free(s[i]);
+		i++;
+	}
+	if (boolean)
+		msj_error();
+	free(s);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: avenegas <avenegas@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/23 13:48:57 by avenegas          #+#    #+#             */
+/*   Updated: 2023/05/23 16:04:26 by avenegas         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #include "libft.h"
 
@@ -12,15 +24,4 @@ t_list	*ft_lstlast(t_list *lst)
 		lst = lst -> next;
 	}
 	return (tmp);
-}
-
-int main(void)
-{
-    t_list *new;
-    char *str;
-
-    str = "hola";
-    new = ft_lstnew(str);
-    ft_lstadd_front(&new, ft_lstnew("adios"));
-    printf("%s", ft_lstlast(new)->content);
 }

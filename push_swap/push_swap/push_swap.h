@@ -1,10 +1,24 @@
-#include "libft/libft.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: avenegas <avenegas@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/23 14:03:11 by avenegas          #+#    #+#             */
+/*   Updated: 2023/05/23 16:39:57 by avenegas         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
+
+# include "libft/libft.h"
 
 typedef struct s_stack
 {
+	int				boolean;
+	int				check;
 	int				num;
 	int				id;
 	struct s_stack	*next;
@@ -20,40 +34,33 @@ typedef struct s_data
 	int				count_temp;
 	int				max;
 	int				min;
+	int				check;
 }					t_data;
 
-// controlError.c functions
-t_stack				*controlError(int argc, char **argv);
+// main.c
+int					main(int argc, char **argv);
 
-// errorHandler.c functions
-void				errorHandler(t_stack *stack_a, int i);
+// push_swap.c
+void				cut_arguments(int argc, char **argv, char **ar);
 
-// oneArgument.c functions
-t_stack				*oneArgument(char **argv);
+// selection_sort.c
+void				get_element(char **args);
+// controls.c
+void				free_all(char **s, int boolean);
+int					sorted(char **s, int sz);
+int					duplicates(char **s, int sz);
+int					ft_atoi_modified(char *str, int error);
+// stack.c
+void				create_stacks(int count, char **ar, int num);
+// get_number_id.c
+void				get_number_id(t_stack *stack_a, int len);
 
-// freeList.c functions
-void				ft_freeList(t_stack **stack_a);
+// lstmain.c
+void				ft_lstadd_back_modified(t_stack **lst, t_stack *new);
+int					ft_lstsize_modified(t_stack *lst);
+t_stack				*ft_lstlast_modified(t_stack *lst);
+void				ft_lstadd_back_modified(t_stack **lst, t_stack *new);
+int					descending_order(t_stack *stack);
 
-// LIST FUNCTIONS
-
-void				ft_add_back(t_stack **stack, t_stack *stack_new);
-t_stack				*ft_lstlast_list(t_stack *stack);
-t_stack				*ft_stack_new(int content);
-int					duplicate(t_stack *stack_a);
-int					ft_lstsize_list(t_stack *stack);
-t_stack				*oneArgument(char **argv);
-// ft_atoi_modified.c functions
-int					ft_atoi_modified(const char *str);
-
-// isSorted.c functions
-int					isSorted(t_stack *stack_a);
-
-// sort.c functions
-struct s_stack		*ft_sort(t_stack **stack_a, t_stack **stack_b);
-
-// swap.c functions
-struct s_stack		*onlyThree(struct s_stack *stack_a);
-void				calculate(int argc, struct s_stack *stack_a,
-						struct s_stack *stack_b);
-int					nbMax(struct s_stack *stack);
-int					numberMin(struct s_stack *stack);
+void				exchange(t_stack **stack);
+#endif

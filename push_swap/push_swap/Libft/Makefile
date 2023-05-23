@@ -1,12 +1,12 @@
-Header# **************************************************************************** #
+# **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: avenegas <avenegas@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/03/09 09:07:53 by avenegas          #+#    #+#              #
-#    Updated: 2023/03/22 16:25:31 by avenegas         ###   ########.fr        #
+#    Created: 2023/05/23 13:43:13 by avenegas          #+#    #+#              #
+#    Updated: 2023/05/23 15:02:53 by avenegas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SRCSB	=	ft_lstnew.c \
 			ft_lstdelone.c \
 			ft_lstclear.c \
 			ft_lstiter.c \
+			ft_lstadd_back.c \
 
 OBJ = $(SRC:.c=.o)
 OBJSB = ${SRCSB:.c=.o}
@@ -41,7 +42,7 @@ INCLUDE = libft.h
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(INCLUDE)
+$(NAME): $(OBJ) $(INCLUDE) 
 	$(LIB) $(NAME) $(OBJ)
 
 bonus:		${OBJS} ${OBJSB}

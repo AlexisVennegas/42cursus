@@ -1,27 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: avenegas <avenegas@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/23 13:46:59 by avenegas          #+#    #+#             */
+/*   Updated: 2023/05/23 13:47:04 by avenegas         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_lstsize(t_list *lst)
+int	ft_lstsize(t_list *lst)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (lst)
-    {
-        lst = lst->next;
-        i++;
-    }
-    return (i);
+	i = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
 }
-/*
-int main(void)
-{
-    t_list *new;
-    char *str;
-
-    str = "hola";
-    new = ft_lstnew(str);
-    ft_lstadd_front(&new, ft_lstnew("adios"));
-    printf("%d", ft_lstsize(new));
-}
-*/
