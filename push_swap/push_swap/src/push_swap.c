@@ -6,7 +6,7 @@
 /*   By: avenegas <avenegas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 12:10:07 by avenegas          #+#    #+#             */
-/*   Updated: 2023/05/23 16:15:16 by avenegas         ###   ########.fr       */
+/*   Updated: 2023/05/25 18:55:06 by avenegas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ static char	**more_arguments(int argc, char **argv)
 
 	i = 1;
 	j = 0;
+	aux = malloc(sizeof(char *) * (argc));
+	if (!aux)
+		return (NULL);
 	while (argv[i] != NULL)
 	{
-		aux = malloc(sizeof(char *) * (argc));
-		if (!aux)
-			return (NULL);
 		aux[j] = ft_strdup(argv[i]);
 		i++;
 		j++;
@@ -40,20 +40,27 @@ static char	**one_argument(char *argv)
 	args = ft_split(argv, ' ');
 	if (!args)
 		return (NULL);
-	if (ft_strlen(*args) == 1)
-		return (NULL);
 	return (args);
 }
 
-void	cut_arguments(int argc, char **argv, char **ar)
+void	cut_arguments(int argc, char **argv)
 {
+	char	**ar;
+
 	if (argc == 2)
+	{
 		ar = one_argument(argv[1]);
+		if (!ar)
+			return ;
+		get_element(ar, count_arguments(ar));
+	}
 	else if (argc > 2)
+	{
 		ar = more_arguments(argc, argv);
+		if (!ar)
+			return ;
+		get_element(ar, argc - 1);
+	}
 	else
 		return ;
-	if (!ar)
-		return ;
-	get_element(ar);
 }

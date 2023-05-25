@@ -85,12 +85,8 @@ char	**ft_split(char const *s, char c)
 {
 	char			**array;
 	unsigned int	i_str;
-	unsigned int	position;
-	unsigned int	aux;
 
 	i_str = 0;
-	position = 0;
-	aux = 0;
 	if (!s)
 		return (NULL);
 	array = (char **)malloc(sizeof(char *) * (ft_cut_string(s, c) + 1));

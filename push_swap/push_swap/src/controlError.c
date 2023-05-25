@@ -6,7 +6,7 @@
 /*   By: avenegas <avenegas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 12:34:46 by avenegas          #+#    #+#             */
-/*   Updated: 2023/05/23 13:57:36 by avenegas         ###   ########.fr       */
+/*   Updated: 2023/05/25 18:48:31 by avenegas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,15 @@ int	sorted(char **s, int sz)
 	int	j;
 
 	i = 0;
-	while (i < sz)
+	while (i < sz && s[i] != NULL)
 	{
 		j = i + 1;
-		while (j < sz)
+		while (j < sz && s[j] != NULL)
 		{
 			if (ft_atoi(s[i]) > ft_atoi(s[j]))
+			{
 				return (0);
+			}
 			j++;
 		}
 		i++;
@@ -38,18 +40,18 @@ int	duplicates(char **s, int sz)
 	int	j;
 
 	i = 0;
-	while (i < sz)
+	while (i < sz && s[i] != NULL)
 	{
 		j = i + 1;
-		while (j < sz)
+		while (j < sz && s[j] != NULL)
 		{
 			if (ft_atoi(s[i]) == ft_atoi(s[j]))
-				return (0);
+				return (1);
 			j++;
 		}
 		i++;
 	}
-	return (1);
+	return (0);
 }
 
 static void	msj_error(void)
@@ -62,6 +64,7 @@ void	free_all(char **s, int boolean)
 	int	i;
 
 	i = 0;
+	printf("entro al free_all\n");
 	while (s[i] != NULL)
 	{
 		free(s[i]);

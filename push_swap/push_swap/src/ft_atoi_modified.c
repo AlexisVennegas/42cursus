@@ -6,13 +6,13 @@
 /*   By: avenegas <avenegas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 12:58:47 by avenegas          #+#    #+#             */
-/*   Updated: 2023/05/23 16:25:28 by avenegas         ###   ########.fr       */
+/*   Updated: 2023/05/25 19:11:22 by avenegas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int descending_order(t_stack *stack)
+int	descending_order(t_stack *stack)
 {
 	t_stack	*aux;
 
@@ -48,6 +48,6 @@ int	ft_atoi_modified(char *str, int error)
 		i++;
 	}
 	if ((negative * result) > 2147483647 || (negative * result) < -2147483648)
-		return (error);
+		return (error = 1, 0);
 	return (negative * result);
 }

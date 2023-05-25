@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   selectionSort.c                                    :+:      :+:    :+:   */
+/*   get_element.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avenegas <avenegas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 12:20:59 by avenegas          #+#    #+#             */
-/*   Updated: 2023/05/23 14:02:45 by avenegas         ###   ########.fr       */
+/*   Updated: 2023/05/25 18:57:01 by avenegas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,27 +30,31 @@ static int	check_num(char *str)
 	return (1);
 }
 
-static int	control_error(char **s, int sz)
+int	control_error(char **s, int sz)
 {
 	int	i;
 
 	i = 0;
-	while (i < sz)
+	while (i < sz && s[i] != NULL)
 	{
-		if (check_num(s[i]) == 0)
+		if (!check_num(s[i]))
 			return (free_all(s, 1), 1);
 		i++;
 	}
-	if (!s[1])
-		return (free_all(s, 0), 0);
-	if (duplicates(s, sz) == 0)
+	if (duplicates(s, sz))
+	{
+		printf("error por duplicados\n");
 		return (free_all(s, 0), 1);
-	if (sorted(s, sz) == 0)
-		return (free_all(s, 0), 0);
+	}
+	if (sorted(s, sz))
+	{
+		printf("error por orden\n");
+		return (free_all(s, 0), 1);
+	}
 	return (0);
 }
 
-static int	count_arguments(char **s)
+int	count_arguments(char **s)
 {
 	int	i;
 
@@ -60,12 +64,13 @@ static int	count_arguments(char **s)
 	return (i);
 }
 
-void	get_element(char **args)
+void	get_element(char **args, int len)
 {
-	int	count;
-
-	count = count_arguments(args);
-	if (control_error(args, count) == 1)
+	if (control_error(args, len))
+	{
+		printf("control_error\n");
 		return ;
-	create_stacks(count, args, 0);
+	}
+	else
+		create_stacks(len, args, 0);
 }
