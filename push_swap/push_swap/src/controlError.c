@@ -6,7 +6,7 @@
 /*   By: avenegas <avenegas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 12:34:46 by avenegas          #+#    #+#             */
-/*   Updated: 2023/05/25 18:48:31 by avenegas         ###   ########.fr       */
+/*   Updated: 2023/05/26 15:23:03 by avenegas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ void	free_all(char **s, int boolean)
 	int	i;
 
 	i = 0;
-	printf("entro al free_all\n");
 	while (s[i] != NULL)
 	{
 		free(s[i]);

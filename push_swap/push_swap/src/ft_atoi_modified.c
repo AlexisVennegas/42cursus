@@ -6,7 +6,7 @@
 /*   By: avenegas <avenegas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 12:58:47 by avenegas          #+#    #+#             */
-/*   Updated: 2023/05/25 19:11:22 by avenegas         ###   ########.fr       */
+/*   Updated: 2023/05/26 17:00:19 by avenegas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	descending_order(t_stack *stack)
 	t_stack	*aux;
 
 	aux = stack;
-	while (aux->next && aux)
+	while (aux && aux->next)
 	{
 		if (aux->num < aux->next->num)
 			return (0);

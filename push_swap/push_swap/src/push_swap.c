@@ -6,11 +6,21 @@
 /*   By: avenegas <avenegas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 12:10:07 by avenegas          #+#    #+#             */
-/*   Updated: 2023/05/25 18:55:06 by avenegas         ###   ########.fr       */
+/*   Updated: 2023/05/26 17:33:19 by avenegas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+static int	count_arguments(char **s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != NULL)
+		i++;
+	return (i);
+}
 
 static char	**more_arguments(int argc, char **argv)
 {

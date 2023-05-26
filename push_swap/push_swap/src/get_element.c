@@ -6,7 +6,7 @@
 /*   By: avenegas <avenegas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 12:20:59 by avenegas          #+#    #+#             */
-/*   Updated: 2023/05/25 18:57:01 by avenegas         ###   ########.fr       */
+/*   Updated: 2023/05/26 17:32:48 by avenegas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,35 +42,16 @@ int	control_error(char **s, int sz)
 		i++;
 	}
 	if (duplicates(s, sz))
-	{
-		printf("error por duplicados\n");
-		return (free_all(s, 0), 1);
-	}
+		return (free_all(s, 1), 1);
 	if (sorted(s, sz))
-	{
-		printf("error por orden\n");
 		return (free_all(s, 0), 1);
-	}
 	return (0);
-}
-
-int	count_arguments(char **s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] != NULL)
-		i++;
-	return (i);
 }
 
 void	get_element(char **args, int len)
 {
 	if (control_error(args, len))
-	{
-		printf("control_error\n");
 		return ;
-	}
 	else
 		create_stacks(len, args, 0);
 }

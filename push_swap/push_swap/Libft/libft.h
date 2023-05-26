@@ -6,7 +6,7 @@
 /*   By: avenegas <avenegas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 09:45:28 by avenegas          #+#    #+#             */
-/*   Updated: 2023/05/23 15:59:45 by avenegas         ###   ########.fr       */
+/*   Updated: 2023/05/26 17:44:09 by avenegas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,23 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+
+typedef struct s_stack
+{
+	int				boolean;
+	int				check_sort;
+	int				num;
+	int				id;
+	void			*content;
+	struct s_stack	*next;
+	struct s_stack	*prev;
+}					t_stack;
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}					t_list;
 
 void				*ft_memset(void *dest, int c, size_t n);
 void				ft_bzero(void *b, size_t n);
@@ -54,20 +71,14 @@ char				*ft_substr(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s1, char const *set);
 size_t				ft_strlen(const char *s);
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}					t_list;
-
+void				ft_lstadd_back(t_stack **lst, t_stack *new);
 t_list				*ft_lstnew(void *content);
-void				ft_lstadd_front(t_list **lst, t_list *new);
-int					ft_lstsize(t_list *lst);
-t_list				*ft_lstlast(t_list *lst);
-void				ft_lstdelone(t_list *lst, void (*del)(void *));
-void				ft_lstclear(t_list **lst, void (*del)(void *));
+void				ft_lstadd_front(t_stack **lst, t_stack *new);
+int					ft_lstsize(t_stack *lst);
+t_stack				*ft_lstlast(t_stack *lst);
+void				ft_lstdelone(t_stack *lst, void (*del)(void *));
+void				ft_lstclear(t_stack **lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
-void				ft_lstadd_back(t_list **lst, t_list *new);
 #endif

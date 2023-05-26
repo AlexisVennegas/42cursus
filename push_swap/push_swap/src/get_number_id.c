@@ -6,7 +6,7 @@
 /*   By: avenegas <avenegas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:52:34 by avenegas          #+#    #+#             */
-/*   Updated: 2023/05/25 19:19:45 by avenegas         ###   ########.fr       */
+/*   Updated: 2023/05/26 17:11:21 by avenegas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,19 @@ static int	min_number(t_stack *stack_a)
 	return (min);
 }
 
+static void	serch_id(t_stack *stack, int i, int num)
+{
+	t_stack	*aux;
+
+	aux = stack;
+	while (aux)
+	{
+		if (aux->num == num && aux->id == -1)
+			aux->id = i;
+		aux = aux->next;
+	}
+}
+
 void	get_number_id(t_stack *stack_a, int len)
 {
 	t_stack	*aux;
@@ -37,17 +50,12 @@ void	get_number_id(t_stack *stack_a, int len)
 	i = 0;
 	num = 0;
 	aux = stack_a;
-	while (i <= ft_lstsize_modified(aux))
+	while (i <= ft_lstsize(aux))
 	{
 		num = min_number(aux);
-		while (aux)
-		{
-			if (aux->num == num && aux->id == -1)
-				aux->id = i;
-			aux = aux->next;
-		}
+		serch_id(aux, i, num);
 		i++;
 	}
-	if (stack_a)
-		selection_sort(stack_a, len);
+	selection_sort(stack_a, len);
+	return ;
 }

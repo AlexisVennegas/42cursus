@@ -6,21 +6,21 @@
 /*   By: avenegas <avenegas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 13:48:57 by avenegas          #+#    #+#             */
-/*   Updated: 2023/05/25 15:20:24 by avenegas         ###   ########.fr       */
+/*   Updated: 2023/05/26 17:25:20 by avenegas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstlast(t_list *lst)
+t_stack	*ft_lstlast(t_stack *lst)
 {
-	t_list	*tmp;
-
-	tmp = NULL;
-	while (lst != 0)
+	if (lst == NULL)
+		return (0);
+	while (lst)
 	{
-		tmp = lst;
+		if (lst->next == NULL)
+			return (lst);
 		lst = lst->next;
 	}
-	return (tmp);
+	return (lst);
 }

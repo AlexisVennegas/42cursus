@@ -18,11 +18,10 @@ SRC =	src/controlError.c \
 		src/ft_atoi_modified.c \
 		src/get_element.c \
 		src/get_number_id.c \
-		src/lstmain.c \
 		src/main.c \
-		src/quick.c \
 		src/moves.c \
 		src/push_swap.c \
+		src/quick.c \
 		src/selection_sort.c 
 
 OBJDIR = obj/

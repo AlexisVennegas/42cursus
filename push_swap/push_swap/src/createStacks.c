@@ -6,25 +6,11 @@
 /*   By: avenegas <avenegas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 12:45:22 by avenegas          #+#    #+#             */
-/*   Updated: 2023/05/25 19:17:59 by avenegas         ###   ########.fr       */
+/*   Updated: 2023/05/26 17:44:04 by avenegas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-static void	free_argc(char **argv)
-{
-	int	i;
-
-	i = 0;
-	while (argv[i] != NULL)
-	{
-		free(argv[i]);
-		i++;
-	}
-	free(argv);
-	return ;
-}
 
 void	create_stacks(int len, char **ar, int num)
 {
@@ -43,23 +29,23 @@ void	create_stacks(int len, char **ar, int num)
 		aux->boolean = 0;
 		num = ft_atoi_modified(ar[i], aux->boolean);
 		if (aux->boolean == 1)
-			return (free_argc(ar), get_number_id(stack_a, len));
+			return (free_all(ar, 0), get_number_id(stack_a, len));
 		aux->next = NULL;
 		aux->num = num;
 		aux->id = -1;
-		aux->check = 0;
-		lstadd_mod(&stack_a, aux);
+		aux->check_sort = 0;
+		ft_lstadd_back(&stack_a, aux);
 		i++;
 	}
-	return (free_argc(ar), get_number_id(stack_a, len));
+	return (free_all(ar, 0), get_number_id(stack_a, len));
 }
 
-int	max_list(t_stack **stack_a)
+int	max_list(t_stack *stack_a)
 {
 	t_stack	*aux;
 	int		max;
 
-	aux = *stack_a;
+	aux = stack_a;
 	max = 0;
 	while (aux)
 	{
@@ -70,13 +56,13 @@ int	max_list(t_stack **stack_a)
 	return (max);
 }
 
-int	min_list(t_stack **stack_a)
+int	min_list(t_stack *stack_a)
 {
 	t_stack	*aux;
 	int		min;
 
-	aux = *stack_a;
-	min = ft_lstsize_modified(aux) + 1;
+	aux = stack_a;
+	min = ft_lstsize(aux) + 1;
 	while (aux)
 	{
 		if (aux->id < min)

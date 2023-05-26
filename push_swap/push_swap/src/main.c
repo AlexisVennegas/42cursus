@@ -6,7 +6,7 @@
 /*   By: avenegas <avenegas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 12:06:55 by avenegas          #+#    #+#             */
-/*   Updated: 2023/05/25 18:46:38 by avenegas         ###   ########.fr       */
+/*   Updated: 2023/05/26 17:32:28 by avenegas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@ int	main(int argc, char **argv)
 {
 	if (argc == 1)
 		return (0);
-	cut_arguments(argc, argv);  
+	cut_arguments(argc, argv);
 	return (0);
 }
