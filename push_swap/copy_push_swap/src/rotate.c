@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsalazar <fsalazar@student.42madrid.com:>  +#+  +:+       +#+        */
+/*   By: avenegas <avenegas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 13:33:03 by fsalazar          #+#    #+#             */
-/*   Updated: 2023/05/10 13:33:05 by fsalazar         ###   ########.fr       */
+/*   Updated: 2023/05/31 18:46:54 by avenegas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	rotate(t_list **lst)
 	*lst = head->next;
 	head->next = NULL;
 	ft_lstlast(*lst)->next = head;
+	ft_printf("result: %d\n", (*lst)->number);
 }
 
 void	ra(t_list **a)

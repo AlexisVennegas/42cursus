@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quick_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsalazar <fsalazar@student.42madrid.com:>  +#+  +:+       +#+        */
+/*   By: avenegas <avenegas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 13:34:37 by fsalazar          #+#    #+#             */
-/*   Updated: 2023/05/10 13:34:47 by fsalazar         ###   ########.fr       */
+/*   Updated: 2023/05/31 18:52:38 by avenegas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,11 @@ void	quick_sort(t_list **a, t_list **b)
 
 void	split_stack(t_list **a, t_list **b, t_util *info)
 {
-	while (info->sia--)
+	ft_printf("info->sia: %d\n", info->sia);
+	ft_printf("a->index: %d\n", (*a)->index);
+	ft_printf("info->mid: %d\n", info->mid);
+	ft_printf("size: %d\n", ft_lstsize((*b)));
+	while (info->sia--) // 6--
 	{
 		if ((*a)->index <= info->mid)
 			pb(a, b);
@@ -49,8 +53,12 @@ void	split_stack(t_list **a, t_list **b, t_util *info)
 		}
 	}
 	info->max = info->mid;
+	ft_printf("info->max: %d\n", info->max);
+	ft_printf("info->min2: %d\n", info->min);
 	info->mid = (info->max - info->min) / 2 + info->min;
+	ft_printf("info->mid: %d\n", info->mid);
 	info->partitions++;
+	ft_printf("info->partitions: %d\n", info->partitions);
 }
 
 void	push_to_a(t_list **a, t_list **b, t_util *info)
