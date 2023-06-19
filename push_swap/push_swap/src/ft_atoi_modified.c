@@ -6,7 +6,7 @@
 /*   By: avenegas <avenegas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 12:58:47 by avenegas          #+#    #+#             */
-/*   Updated: 2023/06/05 17:56:02 by avenegas         ###   ########.fr       */
+/*   Updated: 2023/06/19 20:52:42 by avenegas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	rrr(t_stack **stack_a, t_stack **stack_b)
 void	rrb(t_stack **stack)
 {
 	reverse_rotate(stack);
-	ft_putstr_fd("rrr\n", 1);
+	ft_putstr_fd("rrb\n", 1);
 }
 
 void	ss(t_stack **stack_a, t_stack **stack_b)

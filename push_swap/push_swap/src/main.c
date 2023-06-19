@@ -6,7 +6,7 @@
 /*   By: avenegas <avenegas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 12:06:55 by avenegas          #+#    #+#             */
-/*   Updated: 2023/06/05 19:13:17 by avenegas         ###   ########.fr       */
+/*   Updated: 2023/06/19 21:18:43 by avenegas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_leak(void)
 {
 	system("leaks push_swap");
 }
-
+//atexit(ft_leak);
 int	main(int argc, char **argv)
 {
 	if (argc == 1)

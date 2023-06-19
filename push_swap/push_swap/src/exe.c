@@ -6,7 +6,7 @@
 /*   By: avenegas <avenegas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 15:24:08 by avenegas          #+#    #+#             */
-/*   Updated: 2023/06/05 19:29:31 by avenegas         ###   ########.fr       */
+/*   Updated: 2023/06/19 21:13:39 by avenegas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	c_i(t_stack **stack_a, t_stack **stack_b, t_data *data)
 {
-	ft_putstr_fd("---c_i----\n", 1);
-	print_stack((*stack_a), (*stack_b));
 	if (ft_lstsize((*stack_b)) > 0 && (*stack_b)->id == data->index)
 		pa(stack_a, stack_b);
 	else if ((*stack_a)->id == data->index)
@@ -70,9 +68,7 @@ void	push_to_a(t_stack **stack_a, t_stack **stack_b, t_data *data)
 	int	i;
 
 	i = 0;
-	ft_putstr_fd("---push_to_a----\n", 1);
 	data->size_b = ft_lstsize((*stack_b));
-	printf("index: %d\n", data->index);
 	while (i < data->size_b && ft_lstsize((*stack_b)))
 	{
 		if ((*stack_b)->id == data->index)
@@ -84,10 +80,8 @@ void	push_to_a(t_stack **stack_a, t_stack **stack_b, t_data *data)
 		}
 		else if ((*stack_b)->id < data->rg)
 			rb(stack_b);
-		print_stack((*stack_a), (*stack_b));
 		i++;
 	}
-	ft_putstr_fd("-------\n", 1);
 	data->max = data->rg;
 	data->rg = (data->max - data->index) / 2 + data->index;
 	data->blocks++;
@@ -96,9 +90,8 @@ void	push_to_a(t_stack **stack_a, t_stack **stack_b, t_data *data)
 void	push_to_b(t_stack **stack_a, t_stack **stack_b, t_data *data)
 {
 	int	divide;
-	
+
 	divide = (*stack_a)->check_sort;
-	ft_putstr_fd("---push_to_b----\n", 1);
 	if ((*stack_a)->check_sort > 0)
 	{
 		while ((*stack_a)->check_sort == divide)
@@ -112,7 +105,6 @@ void	push_to_b(t_stack **stack_a, t_stack **stack_b, t_data *data)
 	{
 		while ((*stack_a)->check_sort != -1)
 		{
-			printf("index: %d\n", data->index);
 			if ((*stack_a)->id != data->index)
 				pb(stack_a, stack_b);
 			c_i(stack_a, stack_b, data);
