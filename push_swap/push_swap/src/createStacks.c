@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   createStacks.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avenegas <avenegas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alexis <alexis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 12:45:22 by avenegas          #+#    #+#             */
-/*   Updated: 2023/06/05 18:15:02 by avenegas         ###   ########.fr       */
+/*   Updated: 2023/08/02 16:03:36 by alexis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	create_stacks(int len, char **ar, int num)
+// genea la primera lista con los numeros que se le pasan por argumento
+void	create_stacks(int len, char **ar)
 {
 	t_stack	*stack_a;
 	t_stack	*aux;
@@ -27,14 +28,13 @@ void	create_stacks(int len, char **ar, int num)
 		if (!aux)
 			return ;
 		aux->boolean_atoi = 0;
-		num = ft_atoi_modified(ar[i], aux);
+		aux->num = ft_atoi_modified(ar[i], aux);
 		aux->next = NULL;
-		aux->num = num;
 		aux->id = -1;
 		aux->check_sort = 0;
 		ft_lstadd_back(&stack_a, aux);
 		if (aux->boolean_atoi == -1)
-			return (free_all(ar, 0), get_number_id(stack_a, len));
+			return (free_all(ar, 1));
 		i++;
 	}
 	return (free_all(ar, 0), get_number_id(stack_a, len));

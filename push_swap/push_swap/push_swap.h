@@ -6,7 +6,7 @@
 /*   By: alexis <alexis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:03:11 by avenegas          #+#    #+#             */
-/*   Updated: 2023/06/05 10:56:57 by alexis           ###   ########.fr       */
+/*   Updated: 2023/08/02 16:05:10 by alexis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,17 @@ typedef struct s_data
 	int	index;
 }		t_data;
 
-// main.c
 int		main(int argc, char **argv);
 
 // push_swap.c
 void	cut_arguments(int argc, char **argv);
-
-// selection_sort.c
-void	get_element(char **args, int len);
 // controls.c
 void	free_all(char **s, int boolean);
 int		sorted(char **s, int sz);
 int		duplicates(char **s, int sz);
 int		ft_atoi_modified(char *str, t_stack *error);
 // stack.c
-void	create_stacks(int count, char **ar, int num);
+void	create_stacks(int count, char **ar);
 // get_number_id.c
 void	get_number_id(t_stack *stack_a, int len);
 int		ft_lst_sorted(t_stack *stack);
@@ -78,4 +74,5 @@ void	rrr(t_stack **stack_a, t_stack **stack_b);
 void	ss(t_stack **stack_a, t_stack **stack_b);
 void	ft_free_lst(t_stack *stack, int error);
 void	print_stack(t_stack *stack_a, t_stack *stack_b);
+void	radix_sort(t_stack **stack_a, t_stack **stack_b);
 #endif

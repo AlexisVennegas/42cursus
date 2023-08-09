@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_number_id.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avenegas <avenegas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alexis <alexis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:52:34 by avenegas          #+#    #+#             */
-/*   Updated: 2023/06/05 17:56:30 by avenegas         ###   ########.fr       */
+/*   Updated: 2023/08/02 14:02:14 by alexis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static void	serch_id(t_stack *stack, int i, int num)
 	}
 }
 
+// genera los id de la lista a
 void	get_number_id(t_stack *stack_a, int len)
 {
 	t_stack	*aux;

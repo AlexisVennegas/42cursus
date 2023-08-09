@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi_modified.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avenegas <avenegas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alexis <alexis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 12:58:47 by avenegas          #+#    #+#             */
-/*   Updated: 2023/06/19 20:52:42 by avenegas         ###   ########.fr       */
+/*   Updated: 2023/08/02 13:48:38 by alexis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ int	descending_order(t_stack *stack)
 int	ft_atoi_modified(char *str, t_stack *error)
 {
 	int	i;
-	int	result;
+	int	s;
 	int	negative;
 
 	i = 0;
-	result = 0;
+	s = 0;
 	negative = 1;
 	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 		i++;
@@ -44,12 +44,15 @@ int	ft_atoi_modified(char *str, t_stack *error)
 	{
 		if (!ft_isdigit(str[i]))
 			return (0);
-		result = result * 10 + (str[i] - '0');
+		s = s * 10 + (str[i] - '0');
 		i++;
 	}
-	if ((negative * result) > 2147483647 || (negative * result) < -2147483648)
+	if ((s > 2147483647 && negative == 1) || (s > 2147483648 && negative == -1))
+	{
 		error->boolean_atoi = -1;
-	return (negative * result);
+		return (negative * s);
+	}
+	return (negative * s);
 }
 
 void	rrr(t_stack **stack_a, t_stack **stack_b)

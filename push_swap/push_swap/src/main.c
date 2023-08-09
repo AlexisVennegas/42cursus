@@ -3,42 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avenegas <avenegas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alexis <alexis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 12:06:55 by avenegas          #+#    #+#             */
-/*   Updated: 2023/06/19 21:18:43 by avenegas         ###   ########.fr       */
+/*   Updated: 2023/08/02 16:02:57 by alexis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-static void	msj_error(void)
-{
-	ft_putstr_fd("Error\n", 2);
-}
-
-void	free_all(char **s, int boolean)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] != NULL)
-	{
-		free(s[i]);
-		i++;
-	}
-	if (boolean)
-		msj_error();
-	free(s);
-}
-
+// COMPROBAR LOS LEAKS DE MEMORIA
 void	ft_leak(void)
 {
 	system("leaks push_swap");
 }
-//atexit(ft_leak);
+
+
+// FUNCION PRINCIPAL MAIN DONDE LE LLEGAN LOS ARGUMENTOS 
 int	main(int argc, char **argv)
 {
+	//atexit(ft_leak);
 	if (argc == 1)
 		return (0);
 	cut_arguments(argc, argv);

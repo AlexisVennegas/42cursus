@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cut_arguments.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avenegas <avenegas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alexis <alexis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 12:10:07 by avenegas          #+#    #+#             */
-/*   Updated: 2023/06/19 21:17:44 by avenegas         ###   ########.fr       */
+/*   Updated: 2023/08/02 13:13:36 by alexis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ static char	**more_arguments(int argc, char **argv)
 	return (aux);
 }
 
+// SI SOLO HAY UN ARGUMENTO LO SEPARA Y LO DEVUELVE EN UN ARRAY
 static char	**one_argument(char *argv)
 {
 	char	**args;
@@ -53,6 +54,7 @@ static char	**one_argument(char *argv)
 	return (args);
 }
 
+// corta los argumentos y los devuelve en un array completo 
 void	cut_arguments(int argc, char **argv)
 {
 	char	**ar;
@@ -62,14 +64,14 @@ void	cut_arguments(int argc, char **argv)
 		ar = one_argument(argv[1]);
 		if (!ar)
 			return ;
-		get_element(ar, count_arguments(ar));
+		control_error(ar, count_arguments(ar));
 	}
 	else if (argc > 2)
 	{
 		ar = more_arguments(argc, argv);
 		if (!ar)
 			return ;
-		get_element(ar, argc - 1);
+		control_error(ar, argc - 1);
 	}
 	else
 		return ;

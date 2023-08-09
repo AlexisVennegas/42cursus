@@ -3,14 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   get_element.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avenegas <avenegas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alexis <alexis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 12:20:59 by avenegas          #+#    #+#             */
-/*   Updated: 2023/06/05 17:56:42 by avenegas         ###   ########.fr       */
+/*   Updated: 2023/08/02 13:25:21 by alexis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+void	free_all(char **s, int boolean)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != NULL)
+	{
+		free(s[i]);
+		i++;
+	}
+	if (boolean)
+		ft_putstr_fd("Error\n", 2);
+	free(s);
+}
 
 static int	check_num(char *str)
 {
@@ -18,46 +33,32 @@ static int	check_num(char *str)
 
 	i = 0;
 	if (!str)
-		return (0);
+		return (1);
 	if (str[i] == '-' || str[i] == '+')
 		i++;
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
-			return (0);
+			return (1);
 		i++;
 	}
-	return (1);
+	return (0);
 }
 
-int	control_error(char **s, int sz)
+int	control_error(char **ar, int len)
 {
 	int	i;
 
 	i = 0;
-	while (i < sz && s[i] != NULL)
+	while (i < len && ar[i] != NULL)
 	{
-		if (!check_num(s[i]))
-			return (free_all(s, 1), 1);
+		if (check_num(ar[i]))
+			return (free_all(ar, 1), 1);
 		i++;
 	}
-	if (duplicates(s, sz))
-		return (free_all(s, 1), 1);
-	if (sorted(s, sz))
-		return (free_all(s, 0), 1);
-	return (0);
-}
-
-void	get_element(char **args, int len)
-{
-	if (control_error(args, len))
-		return ;
-	else
-		create_stacks(len, args, 0);
-}
-
-void	sb(t_stack **stack_b)
-{
-	swap_a(stack_b);
-	ft_putstr_fd("sb\n", 1);
+	if (duplicates(ar, len))
+		return (free_all(ar, 1), 1);
+	if (sorted(ar, len))
+		return (free_all(ar, 0), 1);
+	create_stacks(len, ar);
 }

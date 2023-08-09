@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   controlError.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avenegas <avenegas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alexis <alexis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 12:34:46 by avenegas          #+#    #+#             */
-/*   Updated: 2023/06/05 17:46:29 by avenegas         ###   ########.fr       */
+/*   Updated: 2023/08/02 13:47:20 by alexis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,10 @@ int	duplicates(char **s, int sz)
 		i++;
 	}
 	return (0);
+}
+
+void	sb(t_stack **stack_b)
+{
+	swap_a(stack_b);
+	ft_putstr_fd("sb\n", 1);
 }

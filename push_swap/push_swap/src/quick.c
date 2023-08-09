@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quick.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avenegas <avenegas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alexis <alexis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 16:34:07 by avenegas          #+#    #+#             */
-/*   Updated: 2023/06/19 21:14:15 by avenegas         ###   ########.fr       */
+/*   Updated: 2023/07/29 16:39:17 by alexis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	more_than_five(t_stack **stack_a, t_stack **stack_b)
 	data->index = 0;
 	data->blocks = 0;
 	divide_and_conquer(stack_a, stack_b, data);
+	print_stack((*stack_a), (*stack_b));
 	while (ft_lst_sorted((*stack_a)) == 0 || ft_lstsize((*stack_b)))
 	{
 		if (ft_lstsize((*stack_b)))
@@ -80,6 +81,7 @@ void	divide_and_conquer(t_stack **stack_a, t_stack **stack_b, t_data *data)
 {
 	while (data->size_a--)
 	{
+		print_stack((*stack_a), (*stack_b));
 		if ((*stack_a)->id <= data->rg)
 			pb(stack_a, stack_b);
 		else
