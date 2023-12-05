@@ -1,17 +1,5 @@
-<h1>42 Cursus progress</h1>
-
 # 42 Madrid Cursus | avenegas
 My Personal Repository for the various projects from 42. Born2Code! :computer: :grin:
-
-## Main Stats
-
-<div align="center">
-  <img src="https://img.shields.io/github/repo-size/madebypixel02/42-Madrid-Cursus?color=green" />
-  <a href="https://profile.intra.42.fr/users/aperez-b">
-    <img src="https://badgen.net/badge/Born2Code/aperez-b/blue?cache=86400&icon=https://meta.intra.42.fr/images/42_logo.svg">
-  </a>
-  <img src="https://img.shields.io/github/last-commit/madebypixel02/42-Madrid-Cursus" />
-</div>
 
 ## Project List
 
