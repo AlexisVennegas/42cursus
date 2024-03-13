@@ -16,7 +16,7 @@
 
 int			g_foo = 1;
 
-static void	reception(int sig)
+static void	receive_bites(int sig)
 {
 	static size_t	i;
 	static int		bit;
@@ -65,8 +65,8 @@ int	main(int argc, char **argv)
 		ft_putstr_fd(GREEN "PID: ", 1);
 		ft_putnbr_fd(pid_num, 1);
 		ft_putstr_fd("\n", 1);
-		signal(SIGUSR1, reception);
-		signal(SIGUSR2, reception);
+		signal(SIGUSR1, receive_bites);
+		signal(SIGUSR2, receive_bites);
 		signal(SIGINT, close_server);
 		while (g_foo)
 		{

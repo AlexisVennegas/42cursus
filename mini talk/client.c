@@ -29,12 +29,12 @@ static int	send_bin(pid_t pid, char c)
 	return (0);
 }
 
-static int	ftp_server(pid_t pid_num, char *str)
+static int	server_checked(pid_t pid_num, char *str)
 {
 	int	i;
 
 	i = 0;
-	while (str[i] >= ' ' && str[i] <= '~')
+	while (str[i] != '\0' && (str[i] >= ' ' && str[i] <= '~'))
 	{
 		if (send_bin(pid_num, str[i]))
 			return (1);
@@ -61,14 +61,13 @@ int	main(int argc, char **argv)
 	ft_putstr_fd("PID: ", 1);
 	ft_putnbr_fd(ft_atoi(argv[1]), 1);
 	fflush(stdout);
-	system("ps | grep \"./server\" | awk 'NR==3 { print $1 }'");
 	if (argc == 3)
 	{
 		pid_num = ft_atoi(argv[1]);
 		if (!pid_num)
 			return (ft_putstr_fd("Error al procesar PID\n", 2), 1);
 		else if (pid_num)
-			ftp_server(pid_num, argv[2]);
+			server_checked(pid_num, argv[2]);
 	}
 	return (0);
 }
