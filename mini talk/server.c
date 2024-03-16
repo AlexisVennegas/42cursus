@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: avenegas <avenegas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/10 14:58:08 by abello-r          #+#    #+#             */
-/*   Updated: 2024/03/14 12:58:41 by avenegas         ###   ########.fr       */
+/*   Created: 2024/03/16 12:06:31 by avenegas          #+#    #+#             */
+/*   Updated: 2024/03/16 18:10:31 by avenegas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,41 +14,31 @@
 #include <math.h>
 #include <signal.h>
 
-int			bolean_cicle = 1;
-
-static void	receive_bites(int signal_number)
+void	recept_bites(int signal_number)
 {
-	static size_t	i;
-	static int		bit;
-	static char		buf[1000];
+	static unsigned char	current_char;
+	static int				bit_index;
 
-	if (--bit == -1)
+	current_char |= (signal_number == SIGUSR1);
+	bit_index++;
+	if (bit_index == 8)
 	{
-		bit = 6;
-		++i;
+		if (!current_char)
+			ft_putstr_fd("\n", 1);
+		else
+			ft_putchar_fd(current_char, 1);
+		bit_index = 0;
+		current_char = 0;
 	}
-	buf[i] &= ~(1 << 7);
-	if (signal_number == SIGUSR1)
-		buf[i] |= (1 << bit);
-	else if (signal_number == SIGUSR2)
-		buf[i] &= ~(1 << bit);
-	if (buf[i] == 127)
-	{	
-		buf[i] = '\0';
-		write(STDOUT_FILENO, buf, i + 1);
-		ft_memset(buf, '\0', 1001);
-		i = 0;
-		bit = 0;
-	}
+	else
+		current_char <<= 1;
 }
 
 static void	close_server(int signal_number)
 {
-	ft_putstr_fd(RED "Server closed\n", 1);
-	signal_number = 2;
-	if (signal_number == 2)
-		signal_number = 2;
-	bolean_cicle = 0;
+	if (signal_number)
+		ft_putstr_fd(RED "Server closed\n", 1);
+	return (exit(0));
 }
 
 int	main(int argc, char **argv)
@@ -65,12 +55,11 @@ int	main(int argc, char **argv)
 		ft_putstr_fd(GREEN "PID: ", 1);
 		ft_putnbr_fd(pid_num, 1);
 		ft_putstr_fd("\n", 1);
-		signal(SIGUSR1, receive_bites);
-		signal(SIGUSR2, receive_bites);
+		signal(SIGUSR1, recept_bites);
+		signal(SIGUSR2, recept_bites);
 		signal(SIGINT, close_server);
-		while (bolean_cicle)
-		{
-		}
+		while (1)
+			pause();
 	}
 	return (0);
 }
