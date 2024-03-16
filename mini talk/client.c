@@ -6,14 +6,14 @@
 /*   By: avenegas <avenegas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 12:02:10 by avenegas          #+#    #+#             */
-/*   Updated: 2024/03/16 18:06:48 by avenegas         ###   ########.fr       */
+/*   Updated: 2024/03/16 19:16:59 by avenegas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include <signal.h>
 
-void	send_signal(int pid, unsigned char character)
+void	send_bites(int pid, unsigned char character)
 {
 	int				i;
 	unsigned char	temp_char;
@@ -25,7 +25,7 @@ void	send_signal(int pid, unsigned char character)
 		i--;
 		temp_char = character >> i;
 		if (temp_char % 2 == 0)
-			kill(pid, SIGUSR2);
+			kill(pid, SIGUSR2);   
 		else
 			kill(pid, SIGUSR1);
 		usleep(50);
@@ -51,8 +51,8 @@ int	main(int argc, char **argv)
 			return (ft_putstr_fd("Error al procesar PID\n", 2), 0);
 		else
 			while (argv[2][i])
-				send_signal(pid_num, argv[2][i++]);
-		send_signal(pid_num, '\0');
+				send_bites(pid_num, argv[2][i++]);
+		send_bites(pid_num, '\0');
 	}
 	return (0);
 }
