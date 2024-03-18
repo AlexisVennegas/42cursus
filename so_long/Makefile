@@ -1,43 +1,62 @@
-NAME = so_long.out
-SRC = *.c
-OBJ = ${SRC:.c=.o} 
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: avenegas <avenegas@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/03/18 12:24:04 by avenegas          #+#    #+#              #
+#    Updated: 2024/03/18 14:44:29 by avenegas         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-FLAGS = -Wall -Wextra -Werror
-LINKS = -lmlx -framework OpenGL -framework AppKit
+NAME = so_long
 
-NONE='\033[0m'
-GREEN='\033[32m'
-GRAY='\033[2;37m'
-CURSIVE='\033[3m'
+CC = cc
 
-all: $(NAME)
+CC_FLAGS = -Wall -Wextra -Werror -g
+MLXFLAGS = -I /usr/local/include -L /usr/local/lib -l mlx -framework OpenGL -framework Appkit
 
-$(NAME): $(OBJ) libft/libft.a
-	@echo $(CURSIVE)$(GRAY) "     - Compiling $(NAME)..." $(NONE)
-	@gcc $(FLAGS) $(OBJ) $(LINKS) -Llibft -lft -o $(NAME)
-	@echo $(GREEN)"- Compiled -"$(NONE)
-	@rm $(OBJ)
-	@echo $(CURSIVE)$(GRAY) "     Deleted object files" $(NONE)
+RM = rm -f
 
-$(OBJ): $(SRC)
-	@echo $(CURSIVE)$(GRAY) "     - Making object files..." $(NONE)
-	@gcc $(FLAGS) -c $(SRC)
+SRC	=	src/checking.c 		\
+		src/checkingMap.c	\
+		src/game.c			\
+		src/init_game.c		\
+		src/moves.c			\
+		src/read_map.c		\
+		src/so_long.c		\
+		src/utils.c 		\
+		src/checkingMap.c 	\
 
-libft:
-	@make -C libft
+OBJ = $(SRC:.c=.o)
+
+libft = ./libft/libft.a
+MLIBX = ./minilibx_opengl_20191021/libmlx.a
+
+all : $(NAME)
+
+
+$(NAME): $(OBJ)
+	@make -C  libft
+	@make -C minilibx_opengl_20191021
+	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLIBX) $(MLXFLAGS) -o $(NAME)
+	@clear
+
+%.o: %.c
+	@$(CC) $(CFLAGS) -c $< -o $@
+
 
 clean:
-	@echo $(CURSIVE)$(GRAY) "     - Removing object files..." $(NONE)
-	@rm -rf $(OBJ)
-	@make -C libft clean
+	@make clean -C ./libft
+	@make clean -C ./minilibx_opengl_20191021
+	@$(RM) $(OBJ)
 
 fclean: clean
-	@echo $(CURSIVE)$(GRAY) "     - Removing $(NAME)..." $(NONE)
-	@rm -rf $(NAME)
-	@make -C libft fclean
+	@make fclean -C ./libft
+	@make clean -C ./minilibx_opengl_20191021
+	@$(RM) $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re libft
-
-
+.PHONY: all clean fclean re

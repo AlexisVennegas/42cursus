@@ -6,7 +6,7 @@
 /*   By: avenegas <avenegas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 12:02:10 by avenegas          #+#    #+#             */
-/*   Updated: 2024/03/16 19:16:59 by avenegas         ###   ########.fr       */
+/*   Updated: 2024/03/18 09:33:30 by avenegas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	send_bites(int pid, unsigned char character)
 		i--;
 		temp_char = character >> i;
 		if (temp_char % 2 == 0)
-			kill(pid, SIGUSR2);   
+			kill(pid, SIGUSR2);
 		else
 			kill(pid, SIGUSR1);
 		usleep(50);

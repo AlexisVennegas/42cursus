@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_element.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexis <alexis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: avenegas <avenegas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 12:20:59 by avenegas          #+#    #+#             */
-/*   Updated: 2023/08/02 13:25:21 by alexis           ###   ########.fr       */
+/*   Updated: 2024/03/18 09:43:55 by avenegas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,5 @@ int	control_error(char **ar, int len)
 	if (sorted(ar, len))
 		return (free_all(ar, 0), 1);
 	create_stacks(len, ar);
+	return (0);
 }

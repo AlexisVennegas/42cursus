@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi_modified.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexis <alexis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: avenegas <avenegas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 12:58:47 by avenegas          #+#    #+#             */
-/*   Updated: 2023/08/02 13:48:38 by alexis           ###   ########.fr       */
+/*   Updated: 2024/03/18 09:34:49 by avenegas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	ft_atoi_modified(char *str, t_stack *error)
 		s = s * 10 + (str[i] - '0');
 		i++;
 	}
-	if ((s > 2147483647 && negative == 1) || (s > 2147483648 && negative == -1))
+	if ((s > 2147483647 && negative == 1))
 	{
 		error->boolean_atoi = -1;
 		return (negative * s);
